@@ -20,7 +20,15 @@ function start(route, routes) {
     });
   }
 
-  http.createServer(onRequest).listen(config.port, config.host);
+  var server = http.createServer(onRequest).listen(config.port, config.host);
+
+  server.on('error', function(e) {
+    if (e.code === 'EADDRINUSE') {
+      console.log('ERROR: Port number already in use. Select a different port number in config.js.');
+      server.close();
+    }
+  })
+
   console.log('Started HTTP server on ' + config.host  + ':' + config.port + '...');
 }
 
