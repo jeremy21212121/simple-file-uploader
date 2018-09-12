@@ -1,5 +1,6 @@
 module.exports = {
   port: 8000,
+  host: 'localhost',
   s3: {
     key: '',
     secret: '',
