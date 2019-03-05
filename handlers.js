@@ -24,7 +24,7 @@ function upload(response, postData) {
 
   file.contents = file.contents.split(',').pop();
 
-  fileBuffer = new Buffer(file.contents, "base64");
+  fileBuffer = Buffer.from(file.contents, "base64");
 
   if ( config.s3_enabled ) {
 
